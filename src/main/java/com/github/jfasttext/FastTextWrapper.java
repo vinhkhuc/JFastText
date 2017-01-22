@@ -6,7 +6,7 @@ import java.nio.*;
 import org.bytedeco.javacpp.*;
 import org.bytedeco.javacpp.annotation.*;
 
-public class FastTextWrapper extends com.github.jfasttext.config.FastTextWrapperConfig {
+public class FastTextWrapper extends com.github.jfasttext.config.FastTextWrapper {
     static { Loader.load(); }
 
 @Name("std::vector<std::string>") public static class StringVector extends Pointer {
@@ -155,7 +155,7 @@ public class FastTextWrapper extends com.github.jfasttext.config.FastTextWrapper
     }
 }
 
-// Parsed from cpp/fasttext_wrapper.h
+// Parsed from fasttext_wrapper.h
 
 // #ifndef FASTTEXT_WRAPPER_H
 // #define FASTTEXT_WRAPPER_H
@@ -236,7 +236,7 @@ public class FastTextWrapper extends com.github.jfasttext.config.FastTextWrapper
 // #endif
 
 
-// Parsed from cpp/fasttext_wrapper_javacpp.h
+// Parsed from fasttext_wrapper_javacpp.h
 
 // #include "fastText/src/args.cc"
 // #include "fastText/src/dictionary.cc"

@@ -7,24 +7,14 @@ import java.util.List;
 
 public class JFastText {
 
-    public static class ProbLabel {
-        public float logProb;
-        public String label;
-        public ProbLabel(float logProb, String label) {
-            this.logProb = logProb;
-            this.label = label;
-        }
-        @Override
-        public String toString() {
-            return String.format("logProb = %f, label = %s", logProb, label);
-        }
+    private FastTextWrapper.FastTextApi fta;
+
+    public JFastText() {
+        fta = new FastTextWrapper.FastTextApi();
     }
 
-    private FastTextWrapper.FastTextApi fta = new FastTextWrapper.FastTextApi();
-
-    // TODO: Wrap further to make JFastText more Java-ish!
     public void runTrainCmd(String[] args) {
-        // Prepend "fasttext" to the argument list so that it is compatible with C++'s main().
+        // Prepend "fasttext" to the argument list so that it is compatible with C++'s main()
         String[] cArgs = new String[args.length + 1];
         cArgs[0] = "fasttext";
         System.arraycopy(args, 0, cArgs, 1, args.length);
@@ -212,5 +202,18 @@ public class JFastText {
         System.out.println("Prediction = " + jft.predictProba("Is football your favorite games?", 3));
         System.out.println("Prediction = " + jft.predictProba("ok fine. Do you like it?", 2));
         System.out.println("Finished");
+    }
+
+    public static class ProbLabel {
+        public float logProb;
+        public String label;
+        public ProbLabel(float logProb, String label) {
+            this.logProb = logProb;
+            this.label = label;
+        }
+        @Override
+        public String toString() {
+            return String.format("logProb = %f, label = %s", logProb, label);
+        }
     }
 }
