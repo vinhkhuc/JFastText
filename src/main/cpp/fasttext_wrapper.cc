@@ -2,6 +2,7 @@
 #include <sstream>
 
 #include "fasttext_wrapper.h"
+#include "fastText/src/main.cc"
 
 /**
  * FastText's wrapper
@@ -16,23 +17,8 @@ namespace FastTextWrapper {
         privateMembers = (FastTextPrivateMembers*) &fastText;
     }
 
-    void FastTextApi::runTrainCmd(int argc, char **argv) {
-        if (argc < 2) {
-            std::cout << "Missing training command. It must be either "
-                    "skipgram, cbow or supervised" << std::endl;
-            exit(EXIT_FAILURE);
-        }
-        std::string command(argv[1]);
-        if (command != "skipgram" && command != "cbow" && command != "supervised") {
-            std::cout << "The training command must be either "
-                    "skipgram, cbow or supervised" << std::endl;
-            exit(EXIT_FAILURE);
-        }
-        // From the function train() in fasttext's main.cc
-        std::shared_ptr<Args> a = std::make_shared<Args>();
-        a->parseArgs(argc, argv);
-        FastText fasttext;
-        fasttext.train(a);
+    void FastTextApi::runCmd(int argc, char **argv) {
+        main(argc, argv);  // call fastText's main()
     }
 
     void FastTextApi::loadModel(const std::string& filename) {

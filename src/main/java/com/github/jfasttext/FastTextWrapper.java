@@ -180,11 +180,11 @@ public class FastTextWrapper extends com.github.jfasttext.config.FastTextWrapper
     
         public FastTextApi() { super((Pointer)null); allocate(); }
         private native void allocate();
-        // We don't make runTrainCmd() a static method so that Loader.load() is always be called in FastTextApi().
-        public native void runTrainCmd(int arg0, @Cast("char**") PointerPointer arg1);
-        public native void runTrainCmd(int arg0, @Cast("char**") @ByPtrPtr BytePointer arg1);
-        public native void runTrainCmd(int arg0, @Cast("char**") @ByPtrPtr ByteBuffer arg1);
-        public native void runTrainCmd(int arg0, @Cast("char**") @ByPtrPtr byte[] arg1);
+        // We don't make runCmd() a static method so that Loader.load() is always be called in FastTextApi().
+        public native void runCmd(int arg0, @Cast("char**") PointerPointer arg1);
+        public native void runCmd(int arg0, @Cast("char**") @ByPtrPtr BytePointer arg1);
+        public native void runCmd(int arg0, @Cast("char**") @ByPtrPtr ByteBuffer arg1);
+        public native void runCmd(int arg0, @Cast("char**") @ByPtrPtr byte[] arg1);
         public native void loadModel(@StdString BytePointer arg0);
         public native void loadModel(@StdString String arg0);
         public native void test(@StdString BytePointer arg0, int arg1);
@@ -223,15 +223,6 @@ public class FastTextWrapper extends com.github.jfasttext.config.FastTextWrapper
         public native @StdString BytePointer getPretrainedVectorsFileName();
     }
 
-
-//int main(int argc, char** argv) {
-//    FastTextWrapper::FastTextApi fta;
-//    fta.loadModel("../javacpp/test.model.bin");
-//    std::cout << "Loading model ..." << std::endl;
-//    std::vector<float> vec = fta.getVector("you");
-//    std::cout << vec.front();
-//    return 0;
-//}
 
 // #endif
 

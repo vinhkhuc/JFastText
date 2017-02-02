@@ -17,8 +17,8 @@ namespace FastTextWrapper {
         FastTextPrivateMembers* privateMembers;
     public:
         FastTextApi();
-        // We don't make runTrainCmd() a static method so that Loader.load() is always be called in FastTextApi().
-        void runTrainCmd(int, char **);
+        // We don't make runCmd() a static method so that Loader.load() is always be called in FastTextApi().
+        void runCmd(int, char **);
         void loadModel(const std::string&);
         void test(const std::string&, int32_t);
         // TODO: Check if model was loaded
@@ -52,14 +52,5 @@ namespace FastTextWrapper {
         std::string getPretrainedVectorsFileName();
     };
 }
-
-//int main(int argc, char** argv) {
-//    FastTextWrapper::FastTextApi fta;
-//    fta.loadModel("../javacpp/test.model.bin");
-//    std::cout << "Loading model ..." << std::endl;
-//    std::vector<float> vec = fta.getVector("you");
-//    std::cout << vec.front();
-//    return 0;
-//}
 
 #endif

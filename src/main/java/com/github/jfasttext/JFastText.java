@@ -13,12 +13,12 @@ public class JFastText {
         fta = new FastTextWrapper.FastTextApi();
     }
 
-    public void runTrainCmd(String[] args) {
+    public void runCmd(String[] args) {
         // Prepend "fasttext" to the argument list so that it is compatible with C++'s main()
         String[] cArgs = new String[args.length + 1];
         cArgs[0] = "fasttext";
         System.arraycopy(args, 0, cArgs, 1, args.length);
-        fta.runTrainCmd(cArgs.length, new PointerPointer(cArgs));
+        fta.runCmd(cArgs.length, new PointerPointer(cArgs));
     }
 
     public void loadModel(String modelFile) {
@@ -181,12 +181,7 @@ public class JFastText {
 
     public static void main(String[] args) {
         JFastText jft = new JFastText();
-//        jft.runTrainCmd(new String[] {"supervised",
-//                "-loss", "hs",
-//                "-input", "supervised_data.txt",
-//                "-output", "supervised_model"
-//        });
-        jft.runTrainCmd(new String[] {});
+        jft.runCmd(new String[] {});
 
         System.out.println("Loading model ...");
         jft.loadModel("supervised_model.bin");
