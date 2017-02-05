@@ -183,4 +183,9 @@ public class JFastText {
             return String.format("logProb = %f, label = %s", logProb, label);
         }
     }
+
+    public static void main(String[] args) {
+        JFastText jft = new JFastText();
+        jft.runCmd(args);
+    }
 }

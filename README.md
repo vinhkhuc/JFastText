@@ -5,9 +5,11 @@ is built using [javacpp](https://github.com/bytedeco/javacpp).
 
 This library provides full fastText's command line interface. It also provides the API to load trained model 
 into memory for label prediction. Model training is only done via the command line interface. Hence, JFastText 
-is ideal for building Java Web application for text classification using the model trained offline.
+is ideal for building Java Web applications for text classification using the model trained offline.
 
 ## Building
+Maven 3.x and C++ compiler (g++ on Mac/Linux or cl.exe on Windows) are required to build the Jar package. 
+
 ```
 git clone --recursive https://github.com/vinhkhuc/JFastText
 cd JFastText
@@ -72,7 +74,7 @@ The commands supported by fasttext are:
 BSD
 
 ## References
-(fastText's [references](https://github.com/facebookresearch/fastText#references))
+(From fastText's [references](https://github.com/facebookresearch/fastText#references))
 
 Please cite [1](#enriching-word-vectors-with-subword-information) if using this code for learning word representations or [2](#bag-of-tricks-for-efficient-text-classification) if using for text classification.
 

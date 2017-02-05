@@ -16,7 +16,7 @@ public class JFastTextTest {
         jft.runCmd(new String[] {
                 "supervised",
                 "-input", "src/test/resources/data/labeled_data.txt",
-                "-output", "src/test/resources/models/supervised.model",
+                "-output", "src/test/resources/models/supervised.model"
         });
     }
 
@@ -28,6 +28,7 @@ public class JFastTextTest {
                 "skipgram",
                 "-input", "src/test/resources/data/unlabeled_data.txt",
                 "-output", "src/test/resources/models/skipgram.model",
+                "-bucket", "100",
                 "-minCount", "1"
         });
     }
@@ -40,6 +41,7 @@ public class JFastTextTest {
                 "skipgram",
                 "-input", "src/test/resources/data/unlabeled_data.txt",
                 "-output", "src/test/resources/models/cbow.model",
+                "-bucket", "100",
                 "-minCount", "1"
         });
     }
@@ -50,7 +52,7 @@ public class JFastTextTest {
         jft.loadModel("src/test/resources/models/supervised.model.bin");
         String text = "I like soccer";
         String predictedLabel = jft.predict(text);
-        System.out.printf("\nThe label of '%s' is '%s'\n", text, predictedLabel);
+        System.out.printf("\nText: '%s', label: '%s'\n", text, predictedLabel);
     }
 
     @Test
@@ -59,7 +61,7 @@ public class JFastTextTest {
         jft.loadModel("src/test/resources/models/supervised.model.bin");
         String text = "What is the most popular game in the US ?";
         JFastText.ProbLabel predictedProbLabel = jft.predictProba(text);
-        System.out.printf("\nThe label of '%s' is '%s' with probability %f\n",
+        System.out.printf("\nText: '%s', label: '%s', probability: %f\n",
                 text, predictedProbLabel.label, Math.exp(predictedProbLabel.logProb));
     }
 
@@ -81,7 +83,7 @@ public class JFastTextTest {
         jft.loadModel("src/test/resources/models/supervised.model.bin");
         String word = "soccer";
         List<Float> vec = jft.getVector(word);
-        System.out.printf("\nThe word '%s' has the embedding vector: %s\n", word, vec);
+        System.out.printf("\nWord embedding vector of '%s': %s\n", word, vec);
     }
 
     /**
