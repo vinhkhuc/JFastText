@@ -34,7 +34,6 @@ namespace FastTextWrapper {
         fastText.test(ifs, k);
     }
 
-    // TODO: Check if model was loaded
     std::vector<std::string> FastTextApi::predict(const std::string& text, int32_t k) {
         std::vector<std::pair<real,std::string>> predictions = predictProba(text, k);
         std::vector<std::string> labels;
@@ -90,14 +89,6 @@ namespace FastTextWrapper {
 
     std::string FastTextApi::getLabel(int32_t i) {
         return privateMembers->dict_->getLabel(i);
-    }
-
-    std::string FastTextApi::getInput() {
-        return privateMembers->args_->input;
-    }
-
-    std::string FastTextApi::getOutput() {
-        return privateMembers->args_->output;
     }
 
     double FastTextApi::getLr() {

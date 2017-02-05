@@ -202,8 +202,6 @@ public class FastTextWrapper extends com.github.jfasttext.config.FastTextWrapper
         public native int getNWords();
         public native @StdString BytePointer getLabel(int arg0);
         public native int getNLabels();
-        public native @StdString BytePointer getInput();
-        public native @StdString BytePointer getOutput();
         public native double getLr();
         public native int getLrUpdateRate();
         public native int getDim();

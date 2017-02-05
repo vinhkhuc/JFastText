@@ -31,8 +31,6 @@ namespace FastTextWrapper {
         int32_t getNWords();
         std::string getLabel(int32_t);
         int32_t getNLabels();
-        std::string getInput();
-        std::string getOutput();
         double getLr();
         int getLrUpdateRate();
         int getDim();

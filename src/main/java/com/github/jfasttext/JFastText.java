@@ -95,14 +95,6 @@ public class JFastText {
         return stringVec2Strings(fta.getWords());
     }
 
-    public String getInput() {
-        return fta.getInput().getString();
-    }
-
-    public String getOutput() {
-        return fta.getOutput().getString();
-    }
-
     public double getLr() {
         return fta.getLr();
     }
@@ -178,26 +170,6 @@ public class JFastText {
         }
         return strings;
     }
-
-//    public static void main(String[] args) {
-//        JFastText jft = new JFastText();
-//        jft.runCmd(new String[] {});
-//
-//        System.out.println("Loading model ...");
-//        jft.loadModel("supervised_model.bin");
-//        System.out.println("Getting model's params ...");
-//        System.out.println("Vector = " + jft.getVector("you"));
-//        System.out.println("Dim = " + jft.getDim());
-//        System.out.println("Testing model ...");
-//        jft.test("supervised_data.txt", 1);
-//
-//        System.out.println("Predicting ...");
-//        System.out.println("Predicted label = " + jft.predict("soccer"));
-//        System.out.println("Prediction = " + jft.predictProba("soccer", 3));
-//        System.out.println("Prediction = " + jft.predictProba("Is football your favorite games?", 3));
-//        System.out.println("Prediction = " + jft.predictProba("ok fine. Do you like it?", 2));
-//        System.out.println("Finished");
-//    }
 
     public static class ProbLabel {
         public float logProb;
