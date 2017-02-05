@@ -1,0 +1,6 @@
+__label__soccer Soccer is a game played by two teams of eleven players .
+__label__soccer The Premier League is an English professional league for men's association soccer clubs .
+__label__football Football is the most popular game in the US .
+__label__football A football game usually takes 3 hours and 12 minutes .
+__label__soccer Do you like soccer ?
+__label__football Is football your favorite games ?

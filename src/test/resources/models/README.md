@@ -1,0 +1,1 @@
+This folder contains trained models during the test cases in JFastTextTest.
