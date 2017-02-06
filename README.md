@@ -7,6 +7,16 @@ This library provides full fastText's command line interface. It also provides t
 into memory for label prediction. Model training is only done via the command line interface. Hence, JFastText 
 is ideal for building Java Web applications for text classification using the model trained offline.
 
+## Maven dependency
+```xml
+<dependency>
+  <groupId>com.github.vinhkhuc</groupId>
+  <artifactId>jfasttext</artifactId>
+  <version>0.1</version>
+</dependency>
+```
+
+
 ## Building
 Maven 3.x and C++ compiler (g++ on Mac/Linux or cl.exe on Windows) are required to build the Jar package. 
 
@@ -34,8 +44,10 @@ jft.runCmd(new String[] {
         "-output", "src/test/resources/models/supervised.model"
 });
 
-# Load model from file and do label prediction
+# Load model from file
 jft.loadModel("src/test/resources/models/supervised.model.bin");
+
+# Do label prediction
 String text = "What is the most popular game in the US ?";
 JFastText.ProbLabel predictedProbLabel = jft.predictProba(text);
 System.out.printf("\nThe label of '%s' is '%s' with probability %f\n",
