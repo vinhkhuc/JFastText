@@ -10,20 +10,23 @@ is ideal for building Java Web applications for text classification using the mo
 ## Building
 Maven 3.x and C++ compiler (g++ on Mac/Linux or cl.exe on Windows) are required to build the Jar package. 
 
-```
+```bash
 git clone --recursive https://github.com/vinhkhuc/JFastText
 cd JFastText
 mvn clean package
 ```
 
 ## Examples
-```
+
+### Initialization
+
+```java
 import com.github.jfasttext.JFastText;
 JFastText jft = new JFastText();
 ```
 
 ### Text classification
-```
+```java
 # Train supervised model
 jft.runCmd(new String[] {
         "supervised",
@@ -40,23 +43,19 @@ System.out.printf("\nThe label of '%s' is '%s' with probability %f\n",
 ``` 
  
 ### Word embedding learning
-```
+```java
 jft.runCmd(new String[] {
         "skipgram",
         "-input", "src/test/resources/data/unlabeled_data.txt",
         "-output", "src/test/resources/models/skipgram.model",
+        "-bucket", "100",
         "-minCount", "1"
 });
 ```
 
 ### fastText's command line
-```
-java -cp target/jfasttext-*-jar-with-dependencies.jar
-```
-
-The arguments are as follows:
-
-```
+```bash
+$ java -jar target/jfasttext-*-jar-with-dependencies.jar
 usage: fasttext <command> <args>
 
 The commands supported by fasttext are:
