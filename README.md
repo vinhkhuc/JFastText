@@ -28,6 +28,11 @@ mvn clean package
 ```
 
 ## Examples
+Examples on how to use JFastText's API and its command line interface can be found at
+[api](https://github.com/vinhkhuc/JFastText/examples/api) and
+[cmd](https://github.com/vinhkhuc/JFastText/examples/cmd).
+
+## How to use
 
 ### Initialization
 
@@ -50,9 +55,9 @@ jft.loadModel("src/test/resources/models/supervised.model.bin");
 
 // Do label prediction
 String text = "What is the most popular game in the US ?";
-JFastText.ProbLabel predictedProbLabel = jft.predictProba(text);
+JFastText.ProbLabel probLabel = jft.predictProba(text);
 System.out.printf("\nThe label of '%s' is '%s' with probability %f\n",
-        text, predictedProbLabel.label, Math.exp(predictedProbLabel.logProb));
+        text, probLabel.label, Math.exp(probLabel.logProb));
 ``` 
  
 ### Word embedding learning

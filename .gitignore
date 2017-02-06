@@ -3,3 +3,5 @@ target/
 *.iml
 *.bin
 *.vec
+examples/command_line/data
+examples/command_line/result
