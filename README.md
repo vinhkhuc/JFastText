@@ -29,8 +29,7 @@ mvn clean package
 
 ## Examples
 Examples on how to use JFastText's API and its command line interface can be found at
-[api](https://github.com/vinhkhuc/JFastText/examples/api) and
-[cmd](https://github.com/vinhkhuc/JFastText/examples/cmd).
+[api](examples/api) and [cmd](examples/cmd).
 
 ## How to use
 
