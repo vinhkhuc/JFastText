@@ -1,6 +1,6 @@
 ## Introduction
 JFastText is a Java wrapper for Facebook's [fastText](https://github.com/facebookresearch/fastText), 
-a library for efficient learning of word embeddings and fast sentence classification. The Java interface 
+a library for efficient learning of word embeddings and fast sentence classification. The Java interface
 is built using [javacpp](https://github.com/bytedeco/javacpp). 
 
 This library provides full fastText's command line interface. It also provides the API for 
