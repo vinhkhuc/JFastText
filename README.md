@@ -3,9 +3,10 @@ JFastText is a Java wrapper for Facebook's [fastText](https://github.com/faceboo
 a library for efficient learning of word embeddings and fast sentence classification. The Java interface 
 is built using [javacpp](https://github.com/bytedeco/javacpp). 
 
-This library provides full fastText's command line interface. It also provides the API to load trained model 
-into memory for label prediction. Model training is only done via the command line interface. Hence, JFastText 
-is ideal for building Java Web applications for text classification using the model trained offline.
+This library provides full fastText's command line interface. It also provides the API for 
+loading trained model from file to do label prediction in memory. Model training is only done 
+via the command line interface. Hence, JFastText is ideal for building Java Web applications 
+for text classification using the model trained offline.
 
 ## Maven dependency
 ```xml
@@ -37,17 +38,17 @@ JFastText jft = new JFastText();
 
 ### Text classification
 ```java
-# Train supervised model
+// Train supervised model
 jft.runCmd(new String[] {
         "supervised",
         "-input", "src/test/resources/data/labeled_data.txt",
         "-output", "src/test/resources/models/supervised.model"
 });
 
-# Load model from file
+// Load model from file
 jft.loadModel("src/test/resources/models/supervised.model.bin");
 
-# Do label prediction
+// Do label prediction
 String text = "What is the most popular game in the US ?";
 JFastText.ProbLabel predictedProbLabel = jft.predictProba(text);
 System.out.printf("\nThe label of '%s' is '%s' with probability %f\n",
@@ -65,7 +66,7 @@ jft.runCmd(new String[] {
 });
 ```
 
-### fastText's command line
+### FastText's command line
 ```bash
 $ java -jar target/jfasttext-*-jar-with-dependencies.jar
 usage: fasttext <command> <args>
