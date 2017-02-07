@@ -21,7 +21,8 @@ The Jar package on Maven Central is bundled with precompiled fastText library fo
 MacOSX 64bit.
 
 ## Building
-Maven and C++ compiler (g++ on Mac/Linux or cl.exe on Windows) are required to build the Jar package.
+To build the Jar package, C++ compiler (g++ on Mac/Linux or cl.exe on Windows) are required
+to compile fastText's code.
 
 ```bash
 git clone --recursive https://github.com/vinhkhuc/JFastText
