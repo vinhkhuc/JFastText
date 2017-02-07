@@ -1,12 +1,13 @@
 ## Introduction
 JFastText is a Java wrapper for Facebook's [fastText](https://github.com/facebookresearch/fastText), 
-a library for efficient learning of word embeddings and fast sentence classification. The Java interface
-is built using [javacpp](https://github.com/bytedeco/javacpp). 
+a library for efficient learning of word embeddings and fast sentence classification. The JNI interface
+is built using [javacpp](https://github.com/bytedeco/javacpp).
 
-This library provides full fastText's command line interface. It also provides the API for 
-loading trained model from file to do label prediction in memory. Model training is only done 
-via the command line interface. Hence, JFastText is ideal for building Java Web applications 
-for text classification using the model trained offline.
+The library provides full fastText's command line interface. It also provides the API for
+loading trained model from file to do label prediction in memory. Model training is supported
+via the command line interface.
+
+JFastText is ideal for building fast Java applications for text classification.
 
 ## Maven dependency
 ```xml
@@ -16,10 +17,11 @@ for text classification using the model trained offline.
   <version>0.1</version>
 </dependency>
 ```
-
+The Jar package on Maven Central is bundled with precompiled fastText library for Windows, Linux and
+MacOSX 64bit.
 
 ## Building
-Maven 3.x and C++ compiler (g++ on Mac/Linux or cl.exe on Windows) are required to build the Jar package. 
+Maven and C++ compiler (g++ on Mac/Linux or cl.exe on Windows) are required to build the Jar package.
 
 ```bash
 git clone --recursive https://github.com/vinhkhuc/JFastText
@@ -28,8 +30,7 @@ mvn clean package
 ```
 
 ## Examples
-Examples on how to use JFastText's API and its command line interface can be found in the folders
-[examples/api](examples/api) and [examples/cmd](examples/cmd).
+Examples on how to use JFastText can be found at [examples/api](examples/api) and [examples/cmd](examples/cmd).
 
 ## How to use
 
@@ -37,6 +38,7 @@ Examples on how to use JFastText's API and its command line interface can be fou
 
 ```java
 import com.github.jfasttext.JFastText;
+...
 JFastText jft = new JFastText();
 ```
 
