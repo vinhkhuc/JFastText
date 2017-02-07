@@ -7,7 +7,7 @@ The library provides full fastText's command line interface. It also provides th
 loading trained model from file to do label prediction in memory. Model training is supported
 via the command line interface.
 
-JFastText is ideal for building fast Java applications for text classification.
+JFastText is ideal for building fast text classifiers in Java.
 
 ## Maven dependency
 ```xml
