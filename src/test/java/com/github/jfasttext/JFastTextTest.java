@@ -107,4 +107,17 @@ public class JFastTextTest {
         System.out.printf("\tnumber of buckets = %d\n", jft.getBucket());
         System.out.printf("\tlabel prefix = %s\n\n", jft.getLabelPrefix());
     }
+
+    /**
+     * Test model unloading to release memory (Java's GC doesn't collect memory
+     * allocated by native function calls).
+     */
+    @Test
+    public void test8ModelUnloading() {
+        JFastText jft = new JFastText();
+        System.out.println("\nLoading model ...");
+        jft.loadModel("src/test/resources/models/supervised.model.bin");
+        System.out.println("Unloading model ...");
+        jft.unloadModel();
+    }
 }

@@ -20,6 +20,9 @@ namespace FastTextWrapper {
         // We don't make runCmd() a static method so that Loader.load() is always be called in FastTextApi().
         void runCmd(int, char **);
         void loadModel(const std::string&);
+        // Model unloading is not available in fastText C++. This method is added since
+        // Java's GC doesn't collect memory allocated by native function calls.
+        void unloadModel();
         void test(const std::string&, int32_t);
         // TODO: Check if model was loaded
         std::vector<std::string> predict(const std::string&, int32_t);

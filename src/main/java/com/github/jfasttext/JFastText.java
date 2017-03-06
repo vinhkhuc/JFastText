@@ -25,6 +25,10 @@ public class JFastText {
         fta.loadModel(modelFile);
     }
 
+    public void unloadModel() {
+        fta.unloadModel();
+    }
+
     public void test(String testFile) {
         test(testFile, 1);
     }

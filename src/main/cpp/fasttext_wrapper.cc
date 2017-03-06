@@ -25,6 +25,17 @@ namespace FastTextWrapper {
         fastText.loadModel(filename);
     }
 
+    void FastTextApi::unloadModel() {
+        // Call shared_ptr's reset() to release memory's ownership so
+        // that the memory can be collected by GC (new in C++ 11).
+        // Ref: http://en.cppreference.com/w/cpp/memory/shared_ptr/reset
+        privateMembers->args_.reset();
+        privateMembers->dict_.reset();
+        privateMembers->input_.reset();
+        privateMembers->output_.reset();
+        privateMembers->model_.reset();
+    }
+
     void FastTextApi::test(const std::string& filename, int32_t k) {
         std::ifstream ifs(filename);
         if(!ifs.is_open()) {

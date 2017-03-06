@@ -187,6 +187,9 @@ public class FastTextWrapper extends com.github.jfasttext.config.FastTextWrapper
         public native void runCmd(int arg0, @Cast("char**") @ByPtrPtr byte[] arg1);
         public native void loadModel(@StdString BytePointer arg0);
         public native void loadModel(@StdString String arg0);
+        // Model unloading is not available in fastText C++. This method is added since
+        // Java's GC doesn't collect memory allocated by native function calls.
+        public native void unloadModel();
         public native void test(@StdString BytePointer arg0, int arg1);
         public native void test(@StdString String arg0, int arg1);
         // TODO: Check if model was loaded
