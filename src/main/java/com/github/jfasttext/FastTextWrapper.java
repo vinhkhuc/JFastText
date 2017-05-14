@@ -230,6 +230,8 @@ public class FastTextWrapper extends com.github.jfasttext.config.FastTextWrapper
 
 // Parsed from fasttext_wrapper_javacpp.h
 
+// Added <numeric> since VS 14.0 complains about missing std::iota
+// #include <numeric>
 // #include "fastText/src/args.cc"
 // #include "fastText/src/dictionary.cc"
 // #include "fastText/src/fasttext.cc"
