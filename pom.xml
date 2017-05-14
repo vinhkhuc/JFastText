@@ -6,7 +6,7 @@
 
     <groupId>com.github.vinhkhuc</groupId>
     <artifactId>jfasttext</artifactId>
-    <version>0.2</version>
+    <version>0.3</version>
     <name>Java interface for fastText</name>
     <description>
         JFastText is a Java interface for fastText, a library for efficient learning of
@@ -85,8 +85,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.0</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <compilerArgument>-Xlint:all</compilerArgument>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>

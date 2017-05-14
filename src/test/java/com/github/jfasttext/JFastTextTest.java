@@ -10,7 +10,7 @@ import java.util.List;
 public class JFastTextTest {
 
     @Test
-    public void test1TrainSupervisedCmd() {
+    public void test01TrainSupervisedCmd() {
         System.out.printf("\nTraining supervised model ...\n");
         JFastText jft = new JFastText();
         jft.runCmd(new String[] {
@@ -21,7 +21,7 @@ public class JFastTextTest {
     }
 
     @Test
-    public void test2TrainSkipgramCmd() {
+    public void test02TrainSkipgramCmd() {
         System.out.printf("\nTraining skipgram word-embedding ...\n");
         JFastText jft = new JFastText();
         jft.runCmd(new String[] {
@@ -34,7 +34,7 @@ public class JFastTextTest {
     }
 
     @Test
-    public void test3TrainCbowCmd() {
+    public void test03TrainCbowCmd() {
         System.out.printf("\nTraining cbow word-embedding ...\n");
         JFastText jft = new JFastText();
         jft.runCmd(new String[] {
@@ -47,7 +47,7 @@ public class JFastTextTest {
     }
 
     @Test
-    public void test3Predict() {
+    public void test04Predict() {
         JFastText jft = new JFastText();
         jft.loadModel("src/test/resources/models/supervised.model.bin");
         String text = "I like soccer";
@@ -56,17 +56,17 @@ public class JFastTextTest {
     }
 
     @Test
-    public void test4PredictProba() {
+    public void test05PredictProba() {
         JFastText jft = new JFastText();
         jft.loadModel("src/test/resources/models/supervised.model.bin");
-        String text = "What is the most popular game in the US ?";
+        String text = "What is the most popular sport in the US ?";
         JFastText.ProbLabel predictedProbLabel = jft.predictProba(text);
         System.out.printf("\nText: '%s', label: '%s', probability: %f\n",
                 text, predictedProbLabel.label, Math.exp(predictedProbLabel.logProb));
     }
 
     @Test
-    public void test5MultiPredictProba() {
+    public void test06MultiPredictProba() {
         JFastText jft = new JFastText();
         jft.loadModel("src/test/resources/models/supervised.model.bin");
         String text = "Do you like soccer ?";
@@ -78,7 +78,7 @@ public class JFastTextTest {
     }
 
     @Test
-    public void test6GetVector() {
+    public void test07GetVector() {
         JFastText jft = new JFastText();
         jft.loadModel("src/test/resources/models/supervised.model.bin");
         String word = "soccer";
@@ -90,7 +90,7 @@ public class JFastTextTest {
      * Test retrieving model's information: words, labels, learning rate, etc.
      */
     @Test
-    public void test7ModelInfo() {
+    public void test08ModelInfo() {
         System.out.printf("\nSupervised model information:\n");
         JFastText jft = new JFastText();
         jft.loadModel("src/test/resources/models/supervised.model.bin");
@@ -113,7 +113,7 @@ public class JFastTextTest {
      * allocated by native function calls).
      */
     @Test
-    public void test8ModelUnloading() {
+    public void test09ModelUnloading() {
         JFastText jft = new JFastText();
         System.out.println("\nLoading model ...");
         jft.loadModel("src/test/resources/models/supervised.model.bin");

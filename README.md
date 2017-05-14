@@ -26,7 +26,7 @@ C++ compiler (g++ on Mac/Linux or cl.exe on Windows) is required to compile fast
 ```bash
 git clone --recursive https://github.com/vinhkhuc/JFastText
 cd JFastText
-mvn clean package
+mvn package
 ```
 
 ## Examples
@@ -40,6 +40,17 @@ Examples on how to use JFastText can be found at [examples/api](examples/api) an
 import com.github.jfasttext.JFastText;
 ...
 JFastText jft = new JFastText();
+```
+
+### Word embedding learning
+```java
+jft.runCmd(new String[] {
+        "skipgram",
+        "-input", "src/test/resources/data/unlabeled_data.txt",
+        "-output", "src/test/resources/models/skipgram.model",
+        "-bucket", "100",
+        "-minCount", "1"
+});
 ```
 
 ### Text classification
@@ -59,17 +70,6 @@ String text = "What is the most popular game in the US ?";
 JFastText.ProbLabel probLabel = jft.predictProba(text);
 System.out.printf("\nThe label of '%s' is '%s' with probability %f\n",
         text, probLabel.label, Math.exp(probLabel.logProb));
-``` 
- 
-### Word embedding learning
-```java
-jft.runCmd(new String[] {
-        "skipgram",
-        "-input", "src/test/resources/data/unlabeled_data.txt",
-        "-output", "src/test/resources/models/skipgram.model",
-        "-bucket", "100",
-        "-minCount", "1"
-});
 ```
 
 ### FastText's command line
@@ -79,13 +79,24 @@ usage: fasttext <command> <args>
 
 The commands supported by fasttext are:
 
-  supervised          train a supervised classifier
-  test                evaluate a supervised classifier
-  predict             predict most likely labels
-  predict-prob        predict most likely labels with probabilities
-  skipgram            train a skipgram model
-  cbow                train a cbow model
-  print-vectors       print vectors given a trained model
+  supervised              train a supervised classifier
+  quantize                quantize a model to reduce the memory usage
+  test                    evaluate a supervised classifier
+  predict                 predict most likely labels
+  predict-prob            predict most likely labels with probabilities
+  skipgram                train a skipgram model
+  cbow                    train a cbow model
+  print-word-vectors      print word vectors given a trained model
+  print-sentence-vectors  print sentence vectors given a trained model
+  nn                      query for nearest neighbors
+  analogies               query for analogies
+
+```
+
+For example:
+
+```bash
+$ java -jar target/jfasttext-*-jar-with-dependencies.jar quantize -h
 ```
 
 ## License
