@@ -66,7 +66,7 @@ jft.runCmd(new String[] {
 jft.loadModel("src/test/resources/models/supervised.model.bin");
 
 // Do label prediction
-String text = "What is the most popular game in the US ?";
+String text = "What is the most popular sport in the US ?";
 JFastText.ProbLabel probLabel = jft.predictProba(text);
 System.out.printf("\nThe label of '%s' is '%s' with probability %f\n",
         text, probLabel.label, Math.exp(probLabel.logProb));
