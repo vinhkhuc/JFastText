@@ -185,6 +185,8 @@ public class FastTextWrapper extends com.github.jfasttext.config.FastTextWrapper
         public native void runCmd(int arg0, @Cast("char**") @ByPtrPtr BytePointer arg1);
         public native void runCmd(int arg0, @Cast("char**") @ByPtrPtr ByteBuffer arg1);
         public native void runCmd(int arg0, @Cast("char**") @ByPtrPtr byte[] arg1);
+        public native @Cast("bool") boolean checkModel(@StdString BytePointer arg0);
+        public native @Cast("bool") boolean checkModel(@StdString String arg0);
         public native void loadModel(@StdString BytePointer arg0);
         public native void loadModel(@StdString String arg0);
         // Model unloading is not available in fastText C++. This method is added since

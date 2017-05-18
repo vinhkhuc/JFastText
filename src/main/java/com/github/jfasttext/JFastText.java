@@ -2,6 +2,8 @@ package com.github.jfasttext;
 
 import org.bytedeco.javacpp.PointerPointer;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,13 @@ public class JFastText {
         fta.runCmd(cArgs.length, new PointerPointer(cArgs));
     }
 
-    public void loadModel(String modelFile) {
+    public void loadModel(String modelFile) throws Exception {
+        if (!new File(modelFile).exists()) {
+            throw new Exception("Model file doesn't exist!");
+        }
+        if (fta.checkModel(modelFile)) {
+            throw new Exception("Model file's format is not compatible with this JFastText version!");
+        }
         fta.loadModel(modelFile);
     }
 
@@ -41,7 +49,8 @@ public class JFastText {
     }
 
     public String predict(String text){
-        return predict(text, 1).get(0);  // NULL pointer exception?
+        List<String> predictions = predict(text, 1);
+        return predictions.size() > 0? predictions.get(0): null;
     }
 
     public List<String> predict(String text, int k) {
@@ -57,7 +66,8 @@ public class JFastText {
     }
 
     public ProbLabel predictProba(String text){
-        return predictProba(text, 1).get(0);  // NULL pointer exception?
+        List<ProbLabel> probaPredictions = predictProba(text, 1);
+        return probaPredictions.size() > 0? probaPredictions.get(0): null;
     }
 
     public List<ProbLabel> predictProba(String text, int k) {

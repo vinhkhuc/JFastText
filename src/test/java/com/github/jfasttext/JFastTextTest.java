@@ -47,7 +47,7 @@ public class JFastTextTest {
     }
 
     @Test
-    public void test04Predict() {
+    public void test04Predict() throws Exception {
         JFastText jft = new JFastText();
         jft.loadModel("src/test/resources/models/supervised.model.bin");
         String text = "I like soccer";
@@ -56,7 +56,7 @@ public class JFastTextTest {
     }
 
     @Test
-    public void test05PredictProba() {
+    public void test05PredictProba() throws Exception {
         JFastText jft = new JFastText();
         jft.loadModel("src/test/resources/models/supervised.model.bin");
         String text = "What is the most popular sport in the US ?";
@@ -66,7 +66,7 @@ public class JFastTextTest {
     }
 
     @Test
-    public void test06MultiPredictProba() {
+    public void test06MultiPredictProba() throws Exception {
         JFastText jft = new JFastText();
         jft.loadModel("src/test/resources/models/supervised.model.bin");
         String text = "Do you like soccer ?";
@@ -78,7 +78,7 @@ public class JFastTextTest {
     }
 
     @Test
-    public void test07GetVector() {
+    public void test07GetVector() throws Exception {
         JFastText jft = new JFastText();
         jft.loadModel("src/test/resources/models/supervised.model.bin");
         String word = "soccer";
@@ -90,7 +90,7 @@ public class JFastTextTest {
      * Test retrieving model's information: words, labels, learning rate, etc.
      */
     @Test
-    public void test08ModelInfo() {
+    public void test08ModelInfo() throws Exception {
         System.out.printf("\nSupervised model information:\n");
         JFastText jft = new JFastText();
         jft.loadModel("src/test/resources/models/supervised.model.bin");
@@ -113,7 +113,7 @@ public class JFastTextTest {
      * allocated by native function calls).
      */
     @Test
-    public void test09ModelUnloading() {
+    public void test09ModelUnloading() throws Exception {
         JFastText jft = new JFastText();
         System.out.println("\nLoading model ...");
         jft.loadModel("src/test/resources/models/supervised.model.bin");

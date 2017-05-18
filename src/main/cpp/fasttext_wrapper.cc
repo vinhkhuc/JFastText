@@ -21,6 +21,22 @@ namespace FastTextWrapper {
         main(argc, argv);  // call fastText's main()
     }
 
+    bool FastTextApi::checkModel(const std::string& filename) {
+        // Replicate the logic in FastText::checkModel() since it's a private function
+        std::ifstream in(filename, std::ifstream::binary);
+        int32_t magic;
+        int32_t version;
+        in.read((char*)&(magic), sizeof(int32_t));
+        if (magic != FASTTEXT_FILEFORMAT_MAGIC_INT32) {
+            return false;
+        }
+        in.read((char*)&(version), sizeof(int32_t));
+        if (version != FASTTEXT_VERSION) {
+            return false;
+        }
+        return true;
+    }
+
     void FastTextApi::loadModel(const std::string& filename) {
         fastText.loadModel(filename);
     }
