@@ -3,7 +3,6 @@ package com.github.jfasttext;
 import org.bytedeco.javacpp.PointerPointer;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +26,7 @@ public class JFastText {
         if (!new File(modelFile).exists()) {
             throw new Exception("Model file doesn't exist!");
         }
-        if (fta.checkModel(modelFile)) {
+        if (!fta.checkModel(modelFile)) {
             throw new Exception("Model file's format is not compatible with this JFastText version!");
         }
         fta.loadModel(modelFile);
