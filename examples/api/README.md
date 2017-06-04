@@ -1,5 +1,5 @@
 To run the API demo app:
 
 ```
-mvn exec:java -Dexec.mainClass=ApiExample
+mvn compile exec:java -Dexec.mainClass=ApiExample
 ```
