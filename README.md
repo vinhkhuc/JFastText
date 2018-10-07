@@ -90,8 +90,10 @@ The commands supported by fasttext are:
   cbow                    train a cbow model
   print-word-vectors      print word vectors given a trained model
   print-sentence-vectors  print sentence vectors given a trained model
+  print-ngrams            print ngrams given a trained model and word
   nn                      query for nearest neighbors
   analogies               query for analogies
+  dump                    dump arguments,dictionary,input/output vectors
 
 ```
 
