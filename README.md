@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/vinhkhuc/JFastText.svg?branch=master)](https://travis-ci.org/vinhkhuc/JFastText)
+
 ## Introduction
 JFastText is a Java wrapper for Facebook's [fastText](https://github.com/facebookresearch/fastText), 
 a library for efficient learning of word embeddings and fast sentence classification. The JNI interface
