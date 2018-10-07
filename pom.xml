@@ -6,7 +6,7 @@
 
     <groupId>com.github.vinhkhuc</groupId>
     <artifactId>jfasttext</artifactId>
-    <version>0.4-SNAPSHOT</version>
+    <version>0.4</version>
     <name>Java interface for fastText</name>
     <description>
         JFastText is a Java interface for fastText, a library for efficient learning of
