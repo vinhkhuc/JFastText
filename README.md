@@ -46,8 +46,7 @@ mvn package
 ```
 
 ## Quick Application - Language Identification
-Since JFastText is wrapped around FastText, we can use the FastText's 
-[pretrained language identification model](https://fasttext.cc/docs/en/language-identification.html).
+JFastText can use FastText's pretrained models directly. Language identification models can be downloaded [here](https://fasttext.cc/docs/en/language-identification.html).
 In this quick example, we will use the [quantized model](https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/lid.176.ftz)
 which is super small and a bit less accurate than the original model.
 
