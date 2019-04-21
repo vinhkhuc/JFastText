@@ -3,15 +3,40 @@ package com.github.jfasttext;
 import org.bytedeco.javacpp.PointerPointer;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 
 public class JFastText {
 
-    private FastTextWrapper.FastTextApi fta;
+    private FastTextWrapper.FastTextApi fta = new FastTextWrapper.FastTextApi();;
 
     public JFastText() {
-        fta = new FastTextWrapper.FastTextApi();
+    }
+
+    public JFastText(final String modelFile) {
+        loadModel(modelFile);
+    }
+
+    public JFastText(final URI modelUri) throws IOException {
+        loadModel(modelUri);
+    }
+
+    public JFastText(final URL modelUrl) throws IOException {
+        loadModel(modelUrl);
+    }
+
+    public JFastText(final InputStream modelStream) throws IOException {
+        loadModel(modelStream);
     }
 
     public void runCmd(String[] args) {
@@ -22,15 +47,48 @@ public class JFastText {
         fta.runCmd(cArgs.length, new PointerPointer(cArgs));
     }
 
-    public void loadModel(String modelFile) {
+    public void loadModel(String modelFile) throws IllegalArgumentException {
         if (!new File(modelFile).exists()) {
-            throw new IllegalArgumentException("Model file doesn't exist!");
+            throw new IllegalArgumentException("Model file " + modelFile + " doesn't exist!");
         }
         if (!fta.checkModel(modelFile)) {
             throw new IllegalArgumentException(
                     "Model file's format is not compatible with this JFastText version!");
         }
         fta.loadModel(modelFile);
+    }
+
+    /**
+     * Loads model from location specified by URI, by copying its content into local file & then loading it.
+     *
+     * @param modelUri location of the model
+     */
+    public void loadModel(URI modelUri) throws IOException {
+        loadModel(modelUri.toURL());
+    }
+
+    /**
+     * Loads model from location specified by URL, by copying its content into local file & then loading it.
+     *
+     * @param modelUrl location of the model
+     */
+    public void loadModel(URL modelUrl) throws IOException {
+        loadModel(modelUrl.openStream());
+    }
+
+    /**
+     * Loads model given InputStream, by copying its content into local file & then loading it.
+     *
+     * @param modelStream stream for model
+     */
+    public void loadModel(InputStream modelStream) throws IOException {
+        Path tmpFile = Files.createTempFile("jft-", ".model");
+        try {
+            Files.copy(modelStream, tmpFile, StandardCopyOption.REPLACE_EXISTING);
+            loadModel(tmpFile.toString());
+        } finally {
+            Files.deleteIfExists(tmpFile);
+        }
     }
 
     public void unloadModel() {
