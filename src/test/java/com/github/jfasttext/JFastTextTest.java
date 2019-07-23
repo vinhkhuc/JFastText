@@ -16,7 +16,9 @@ public class JFastTextTest {
         jft.runCmd(new String[] {
                 "supervised",
                 "-input", "src/test/resources/data/labeled_data.txt",
-                "-output", "src/test/resources/models/supervised.model"
+                "-output", "src/test/resources/models/supervised.model",
+                "-wordNgrams", "3",
+                "-bucket", "100"
         });
     }
 
@@ -86,11 +88,20 @@ public class JFastTextTest {
         System.out.printf("\nWord embedding vector of '%s': %s\n", word, vec);
     }
 
+    @Test
+    public void test08GetSentenceVector() throws Exception {
+        JFastText jft = new JFastText();
+        jft.loadModel("src/test/resources/models/supervised.model.bin");
+        String word = "soccers";
+        List<Float> vec = jft.getSentenceVector(word);
+        System.out.printf("\nSentence embedding vector of '%s': %s\n", word, vec);
+    }
+
     /**
      * Test retrieving model's information: words, labels, learning rate, etc.
      */
     @Test
-    public void test08ModelInfo() throws Exception {
+    public void test09ModelInfo() throws Exception {
         System.out.printf("\nSupervised model information:\n");
         JFastText jft = new JFastText();
         jft.loadModel("src/test/resources/models/supervised.model.bin");
@@ -113,7 +124,7 @@ public class JFastTextTest {
      * allocated by native function calls).
      */
     @Test
-    public void test09ModelUnloading() throws Exception {
+    public void test10ModelUnloading() throws Exception {
         JFastText jft = new JFastText();
         System.out.println("\nLoading model ...");
         jft.loadModel("src/test/resources/models/supervised.model.bin");
