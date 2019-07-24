@@ -6,6 +6,8 @@ import org.junit.runners.MethodSorters;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class JFastTextTest {
 
@@ -94,7 +96,8 @@ public class JFastTextTest {
         jft.loadModel("src/test/resources/models/supervised.model.bin");
         String word = "soccers";
         List<Float> vec = jft.getSentenceVector(word);
-        System.out.printf("\nSentence embedding vector of '%s': %s\n", word, vec);
+        int expectedSize = 100;
+        assertEquals(expectedSize, vec.size());
     }
 
     /**
