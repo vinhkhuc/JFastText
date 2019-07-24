@@ -6,6 +6,8 @@ import org.junit.runners.MethodSorters;
 
 import java.util.List;
 
+import static org.junit.Assert.assertArrayEquals;
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class JFastTextTest {
 
@@ -54,6 +56,16 @@ public class JFastTextTest {
         String predictedLabel = jft.predict(text);
         System.out.printf("\nText: '%s', label: '%s'\n", text, predictedLabel);
     }
+
+	@Test
+	public void test04getArrayVector() throws Exception {
+		JFastText jft = new JFastText();
+		jft.loadModel("src/test/resources/models/supervised.model.bin");
+		String text = "I like soccer";
+		float[] predictedArray = jft.getArrayVector(text);
+		float[] expected = new float[100];
+		assertArrayEquals("", predictedArray, expected, 0.1f);
+	}
 
     @Test
     public void test05PredictProba() throws Exception {
