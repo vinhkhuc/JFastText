@@ -74,7 +74,7 @@ namespace FastTextWrapper {
             const std::string& text, int32_t k) {
         std::vector<std::pair<real,std::string>> predictions;
         std::istringstream in(text);
-        fastText.predict(in, k, predictions);
+        fastText.predictLine(in, predictions, k, 0.0);
         return predictions;
     }
 
