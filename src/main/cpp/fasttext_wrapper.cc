@@ -74,14 +74,14 @@ namespace FastTextWrapper {
             const std::string& text, int32_t k) {
         std::vector<std::pair<real,std::string>> predictions;
         std::istringstream in(text);
-        fastText.predict(in, k, predictions);
+        fastText.predictLine(in, predictions, k, 0.0);
         return predictions;
     }
 
     std::vector<real> FastTextApi::getVector(const std::string& word) {
         Vector vec(privateMembers->args_->dim);
         fastText.getVector(vec, word);
-        return std::vector<real>(vec.data_, vec.data_ + vec.m_);
+        return std::vector<real>(vec.data(), vec.data() + vec.size());
     }
 
     std::vector<std::string> FastTextApi::getWords() {

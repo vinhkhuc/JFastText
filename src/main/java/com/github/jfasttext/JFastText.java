@@ -22,12 +22,13 @@ public class JFastText {
         fta.runCmd(cArgs.length, new PointerPointer(cArgs));
     }
 
-    public void loadModel(String modelFile) throws Exception {
+    public void loadModel(String modelFile) {
         if (!new File(modelFile).exists()) {
-            throw new Exception("Model file doesn't exist!");
+            throw new IllegalArgumentException("Model file doesn't exist!");
         }
         if (!fta.checkModel(modelFile)) {
-            throw new Exception("Model file's format is not compatible with this JFastText version!");
+            throw new IllegalArgumentException(
+                    "Model file's format is not compatible with this JFastText version!");
         }
         fta.loadModel(modelFile);
     }
