@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.vinhkhuc</groupId>
+    <groupId>io.github.carschno</groupId>
     <artifactId>jfasttext</artifactId>
     <version>0.5</version>
     <name>Java interface for fastText</name>
@@ -23,6 +23,14 @@
 
     <developers>
         <developer>
+            <id>carschno</id>
+            <name>Carsten Schnober</name>
+            <url>http://github.com/carschno</url>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+        <developer>
             <id>vinhkhuc</id>
             <name>Vinh Khuc</name>
             <url>http://github.com/vinhkhuc</url>
@@ -34,9 +42,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:https://github.com/vinhkhuc/JFastText.git</connection>
-        <developerConnection>scm:git:git@github.com:vinhkhuc/JFastText.git</developerConnection>
-        <url>https://github.com/vinhkhuc/JFastText</url>
+        <connection>scm:git:https://github.com/carschno/JFastText.git</connection>
+        <developerConnection>scm:git:git@github.com:carschno/JFastText.git</developerConnection>
+        <url>https://github.com/carschno/JFastText</url>
     </scm>
 
     <properties>

@@ -28,7 +28,7 @@ JFastText is ideal for building fast text classifiers in Java.
 ## Maven Dependency
 ```xml
 <dependency>
-  <groupId>com.github.vinhkhuc</groupId>
+  <groupId>com.github.carschno</groupId>
   <artifactId>jfasttext</artifactId>
   <version>0.5</version>
 </dependency>
