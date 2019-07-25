@@ -93,6 +93,15 @@ public class JFastText {
         return wordVec;
     }
 
+    public float[] getArrayVector(String word) {
+        FastTextWrapper.RealVector rv = fta.getVector(word);
+        float[] wordVec = new float[(int)rv.size()];
+        for (int i = 0; i < rv.size(); i++) {
+            wordVec[i] = rv.get(i);
+        }
+        return wordVec;
+    }
+
     public List<Float> getSentenceVector(String sentence) {
         if (!sentence.endsWith("\n")) {
           sentence += "\n";
