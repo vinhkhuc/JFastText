@@ -12,6 +12,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertNotNull;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class JFastTextTest {
@@ -154,7 +155,9 @@ public class JFastTextTest {
      */
     @Test
     public void test10ModelFromURL() throws Exception {
-        URL modelUrl = this.getClass().getClassLoader().getResource("models/supervised.model.bin");
+        String modelFile = "models/supervised.model.bin";
+        URL modelUrl = this.getClass().getClassLoader().getResource(modelFile);
+        assertNotNull(String.format("Failed to locate model '%s'", modelFile), modelUrl);
         JFastText jft = new JFastText(modelUrl);
         System.out.printf("\tnumber of words = %d\n", jft.getNWords());
     }
