@@ -201,6 +201,8 @@ public class FastTextWrapper extends com.github.jfasttext.config.FastTextWrapper
         public native @ByVal FloatStringPairVector predictProba(@StdString String arg0, int arg1);
         public native @ByVal RealVector getVector(@StdString BytePointer arg0);
         public native @ByVal RealVector getVector(@StdString String arg0);
+        public native @ByVal RealVector getSentenceVector(@StdString BytePointer arg0);
+        public native @ByVal RealVector getSentenceVector(@StdString String arg0);
         public native @ByVal StringVector getWords();
         public native @ByVal StringVector getLabels();
         public native @StdString BytePointer getWord(int arg0);

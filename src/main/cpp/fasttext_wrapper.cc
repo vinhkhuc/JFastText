@@ -80,7 +80,14 @@ namespace FastTextWrapper {
 
     std::vector<real> FastTextApi::getVector(const std::string& word) {
         Vector vec(privateMembers->args_->dim);
-        fastText.getVector(vec, word);
+        fastText.getWordVector(vec, word);
+        return std::vector<real>(vec.data(), vec.data() + vec.size());
+    }
+
+    std::vector<real> FastTextApi::getSentenceVector(const std::string& sentence) {
+        Vector vec(privateMembers->args_->dim);
+        std::istringstream in(sentence);
+        fastText.getSentenceVector(in, vec);
         return std::vector<real>(vec.data(), vec.data() + vec.size());
     }
 
