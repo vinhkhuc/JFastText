@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/vinhkhuc/JFastText.svg?branch=master)](https://travis-ci.org/vinhkhuc/JFastText)
+[![Build Status](https://travis-ci.org/carschno/JFastText.svg?branch=master)](https://travis-ci.org/carschno/JFastText)
 
 Table of Contents
 =================
@@ -30,7 +30,7 @@ JFastText is ideal for building fast text classifiers in Java.
 <dependency>
   <groupId>com.github.vinhkhuc</groupId>
   <artifactId>jfasttext</artifactId>
-  <version>0.4</version>
+  <version>0.5</version>
 </dependency>
 ```
 The Jar package on Maven Central is bundled with precompiled fastText library for Windows, Linux and
