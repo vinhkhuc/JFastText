@@ -29,6 +29,7 @@ namespace FastTextWrapper {
         std::vector<std::string> predict(const std::string&, int32_t);
         std::vector<std::pair<real,std::string>> predictProba(const std::string&, int32_t);
         std::vector<real> getVector(const std::string&);
+        std::vector<real> getSentenceVector(const std::string&);
         std::vector<std::string> getWords();
         std::vector<std::string> getLabels();
         std::string getWord(int32_t);
