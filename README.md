@@ -33,11 +33,11 @@ JFastText is ideal for building fast text classifiers in Java.
   <version>0.5.0</version>
 </dependency>
 ```
-The Jar package on Maven Central is bundled with precompiled fastText library for Windows, Linux and
-MacOSX 64bit.
+The Jar package on Maven Central is bundled with precompiled fastText library for ~~Windows,~~ Linux ~~and
+MacOSX~~ 64bit.
 
 ## Building
-C++ compiler (g++ on Mac/Linux or cl.exe on Windows) is required to compile fastText's code.
+C++ compiler (g++ on Mac/Linux or `cl.exe` on Windows) is required to compile fastText's code.
 
 ```bash
 git clone --recursive https://github.com/carschno/JFastText
