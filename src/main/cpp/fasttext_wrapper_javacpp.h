@@ -6,7 +6,7 @@
 #include "fastText/src/matrix.cc"
 #include "fastText/src/model.cc"
 #include "fastText/src/productquantizer.cc"
-#include "fastText/src/qmatrix.cc"
+#include "fastText/src/quantmatrix.cc"
 #include "fastText/src/vector.cc"
 #include "fastText/src/utils.cc"
 
