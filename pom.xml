@@ -6,7 +6,7 @@
 
     <groupId>io.github.carschno</groupId>
     <artifactId>jfasttext</artifactId>
-    <version>0.5.0</version>
+    <version>0.9.1-SNAPSHOT</version>
     <name>Java interface for fastText</name>
     <description>
         JFastText is a Java interface for fastText, a library for efficient learning of
