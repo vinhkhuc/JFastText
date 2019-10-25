@@ -6,6 +6,7 @@
 #include "fastText/src/fasttext.cc"
 #include "fastText/src/loss.cc"
 #include "fastText/src/matrix.cc"
+#include "fastText/src/meter.cc"
 #include "fastText/src/model.cc"
 #include "fastText/src/productquantizer.cc"
 #include "fastText/src/quantmatrix.cc"
