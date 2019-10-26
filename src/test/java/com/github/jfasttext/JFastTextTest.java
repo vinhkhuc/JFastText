@@ -4,11 +4,15 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertNotNull;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class JFastTextTest {
@@ -73,8 +77,7 @@ public class JFastTextTest {
 
     @Test
     public void test05PredictProba() throws Exception {
-        JFastText jft = new JFastText();
-        jft.loadModel("src/test/resources/models/supervised.model.bin");
+        JFastText jft = new JFastText("src/test/resources/models/supervised.model.bin");
         String text = "What is the most popular sport in the US ?";
         JFastText.ProbLabel predictedProbLabel = jft.predictProba(text);
         System.out.printf("\nText: '%s', label: '%s', probability: %f\n",
@@ -83,8 +86,7 @@ public class JFastTextTest {
 
     @Test
     public void test06MultiPredictProba() throws Exception {
-        JFastText jft = new JFastText();
-        jft.loadModel("src/test/resources/models/supervised.model.bin");
+        JFastText jft = new JFastText("src/test/resources/models/supervised.model.bin");
         String text = "Do you like soccer ?";
         System.out.printf("Text: '%s'\n", text);
         for (JFastText.ProbLabel predictedProbLabel: jft.predictProba(text, 2)) {
@@ -95,11 +97,12 @@ public class JFastTextTest {
 
     @Test
     public void test07GetVector() throws Exception {
-        JFastText jft = new JFastText();
-        jft.loadModel("src/test/resources/models/supervised.model.bin");
-        String word = "soccer";
-        List<Float> vec = jft.getVector(word);
-        System.out.printf("\nWord embedding vector of '%s': %s\n", word, vec);
+        try (InputStream is = new FileInputStream("src/test/resources/models/supervised.model.bin")) {
+            JFastText jft = new JFastText(is);
+            String word = "soccer";
+            List<Float> vec = jft.getVector(word);
+            System.out.printf("\nWord embedding vector of '%s': %s\n", word, vec);
+        }
     }
 
     @Test
@@ -118,8 +121,7 @@ public class JFastTextTest {
     @Test
     public void test09ModelInfo() throws Exception {
         System.out.printf("\nSupervised model information:\n");
-        JFastText jft = new JFastText();
-        jft.loadModel("src/test/resources/models/supervised.model.bin");
+        JFastText jft = new JFastText("src/test/resources/models/supervised.model.bin");
         System.out.printf("\tnumber of words = %d\n", jft.getNWords());
         System.out.printf("\twords = %s\n", jft.getWords());
         System.out.printf("\tlearning rate = %g\n", jft.getLr());
@@ -145,5 +147,18 @@ public class JFastTextTest {
         jft.loadModel("src/test/resources/models/supervised.model.bin");
         System.out.println("Unloading model ...");
         jft.unloadModel();
+    }
+
+    /**
+     * Loads model from specified URL (resource, web, etc.)
+     *
+     */
+    @Test
+    public void test10ModelFromURL() throws Exception {
+        String modelFile = "models/supervised.model.bin";
+        URL modelUrl = this.getClass().getClassLoader().getResource(modelFile);
+        assertNotNull(String.format("Failed to locate model '%s'", modelFile), modelUrl);
+        JFastText jft = new JFastText(modelUrl);
+        System.out.printf("\tnumber of words = %d\n", jft.getNWords());
     }
 }
