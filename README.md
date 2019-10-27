@@ -31,7 +31,7 @@ JFastText is ideal for building fast text classifiers in Java.
 <dependency>
   <groupId>io.github.carschno</groupId>
   <artifactId>jfasttext</artifactId>
-  <version>0.5.0</version>
+  <version>0.9.1-SNAPSHOT</version>
 </dependency>
 ```
 The Jar package on Maven Central is bundled with precompiled fastText library for ~~Windows,~~ Linux ~~and
