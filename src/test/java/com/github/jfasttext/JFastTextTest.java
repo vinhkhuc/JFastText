@@ -4,6 +4,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URL;
@@ -155,8 +156,8 @@ public class JFastTextTest {
      */
     @Test
     public void test10ModelFromURL() throws Exception {
-        String modelFile = "models/supervised.model.bin";
-        URL modelUrl = this.getClass().getClassLoader().getResource(modelFile);
+        String modelFile = "src/test/resources/models/supervised.model.bin";
+        URL modelUrl = new File(modelFile).toURI().toURL();
         assertNotNull(String.format("Failed to locate model '%s'", modelFile), modelUrl);
         JFastText jft = new JFastText(modelUrl);
         System.out.printf("\tnumber of words = %d\n", jft.getNWords());
