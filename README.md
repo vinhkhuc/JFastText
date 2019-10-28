@@ -13,6 +13,7 @@ Table of Contents
   * [FastText's Command Line](#fasttexts-command-line)
   * [License](#license)
   * [References](#references)
+  * [Changelog](CHANGELOG.md)
   
 
 ## Introduction
