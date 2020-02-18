@@ -8,11 +8,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-
 import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -66,15 +66,15 @@ public class JFastTextTest {
         System.out.printf("\nText: '%s', label: '%s'\n", text, predictedLabel);
     }
 
-	@Test
-	public void test04getArrayVector() throws Exception {
-		JFastText jft = new JFastText();
-		jft.loadModel("src/test/resources/models/supervised.model.bin");
-		String text = "I like soccer";
-		float[] predictedArray = jft.getArrayVector(text);
-		float[] expected = new float[100];
-		assertArrayEquals("", predictedArray, expected, 0.1f);
-	}
+    @Test
+    public void test04getArrayVector() throws Exception {
+        JFastText jft = new JFastText();
+        jft.loadModel("src/test/resources/models/supervised.model.bin");
+        String text = "I like soccer";
+        float[] predictedArray = jft.getArrayVector(text);
+        float[] expected = new float[100];
+        assertArrayEquals("", predictedArray, expected, 0.1f);
+    }
 
     @Test
     public void test05PredictProba() throws Exception {
@@ -107,6 +107,16 @@ public class JFastTextTest {
     }
 
     @Test
+    public void test07GetArrayVector() throws Exception {
+        try (InputStream is = new FileInputStream("src/test/resources/models/supervised.model.bin")) {
+            JFastText jft = new JFastText(is);
+            String word = "soccer";
+            float[] vec = jft.getArrayVector(word);
+            System.out.printf("\nWord embedding vector of '%s': %s\n", word, Arrays.toString(vec));
+        }
+    }
+
+    @Test
     public void test08GetSentenceVector() throws Exception {
         JFastText jft = new JFastText();
         jft.loadModel("src/test/resources/models/supervised.model.bin");
@@ -114,6 +124,16 @@ public class JFastTextTest {
         List<Float> vec = jft.getSentenceVector(word);
         int expectedSize = 100;
         assertEquals(expectedSize, vec.size());
+    }
+
+    @Test
+    public void test08GetArraySentenceVector() throws Exception {
+        JFastText jft = new JFastText();
+        jft.loadModel("src/test/resources/models/supervised.model.bin");
+        String word = "soccers";
+        float[] vec = jft.getArraySentenceVector(word);
+        int expectedSize = 100;
+        assertEquals(expectedSize, vec.length);
     }
 
     /**
@@ -152,7 +172,6 @@ public class JFastTextTest {
 
     /**
      * Loads model from specified URL (resource, web, etc.)
-     *
      */
     @Test
     public void test10ModelFromURL() throws Exception {

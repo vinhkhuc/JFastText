@@ -142,34 +142,37 @@ public class JFastText {
         return probaPredictions;
     }
 
+    @Deprecated
     public List<Float> getVector(String word) {
-        FastTextWrapper.RealVector rv = fta.getVector(word);
+        float[] vector = getArrayVector(word);
         List<Float> wordVec = new ArrayList<>();
-        for (int i = 0; i < rv.size(); i++) {
-            wordVec.add(rv.get(i));
+        for (float f : vector) {
+            wordVec.add(f);
         }
         return wordVec;
     }
 
     public float[] getArrayVector(String word) {
         FastTextWrapper.RealVector rv = fta.getVector(word);
-        float[] wordVec = new float[(int)rv.size()];
-        for (int i = 0; i < rv.size(); i++) {
-            wordVec[i] = rv.get(i);
-        }
-        return wordVec;
+        return rv.get();
     }
 
+    @Deprecated
     public List<Float> getSentenceVector(String sentence) {
+        float[] vector = getArraySentenceVector(sentence);
+        List<Float> sentenceVec = new ArrayList<>();
+        for (float f : vector) {
+            sentenceVec.add(f);
+        }
+        return sentenceVec;
+    }
+
+    public float[] getArraySentenceVector(String sentence) {
         if (!sentence.endsWith("\n")) {
           sentence += "\n";
         }
         FastTextWrapper.RealVector rv = fta.getSentenceVector(sentence);
-        List<Float> wordVec = new ArrayList<>();
-        for (int i = 0; i < rv.size(); i++) {
-          wordVec.add(rv.get(i));
-        }
-        return wordVec;
+        return rv.get();
     }
 
     public int getNWords() {
