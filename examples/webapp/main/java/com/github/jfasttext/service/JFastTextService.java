@@ -11,6 +11,7 @@ public class JFastTextService {
 
     @PostConstruct
     public void init() {
+        System.out.print("Loading JFastText model ...");
         jft = new JFastText();
         jft.loadModel("../../src/test/resources/models/supervised.model.bin");
     }
