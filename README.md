@@ -51,7 +51,7 @@ In this quick example, we will use the [quantized model](https://s3-us-west-1.am
 which is super small and a bit less accurate than the original model.
 
 ```bash
-$ wget -q https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/lid.176.ftz \
+$ wget -q https://dl.fbaipublicfiles.com/fasttext/supervised-models/lid.176.ftz \
     && { echo "This is English"; echo "Xin chào"; echo "Привет"; } \
     | java -jar target/jfasttext-*-jar-with-dependencies.jar predict lid.176.ftz -
 __label__en
