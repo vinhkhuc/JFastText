@@ -12,6 +12,8 @@ import javax.annotation.PostConstruct;
 public class JFastTextService {
     Logger logger = LoggerFactory.getLogger(JFastTextService.class);
 
+    private static final String FALLBACK = "__unknown__";
+
     @Value("${fastTextModel}")
     private String fastTextModel;
 
@@ -27,6 +29,10 @@ public class JFastTextService {
     public String detectLanguage(String text) {
         JFastText.ProbLabel probLabel = jft.predictProba(text);
         logger.info("jft: " + jft + ", text: " + text + ", probLabel: " + probLabel);
-        return probLabel.label;
+        if (probLabel == null) {
+            return FALLBACK;
+        } else {
+            return probLabel.label;
+        }
     }
 }
