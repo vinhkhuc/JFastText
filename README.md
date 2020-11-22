@@ -1,10 +1,11 @@
-[![Build Status](https://travis-ci.org/vinhkhuc/JFastText.svg?branch=master)](https://travis-ci.org/vinhkhuc/JFastText)
+[![Build Status](https://travis-ci.org/carschno/JFastText.svg?branch=master)](https://travis-ci.org/carschno/JFastText)
 
 Table of Contents
 =================
 
   * [Introduction](#introduction)
   * [Maven Dependency](#maven-dependency)
+    * [Windows and Mac OSX](#windows-and-mac-os-x)
   * [Building](#building)
   * [Quick Application - Language Identification](#quick-application-\--language-identification)
   * [Detailed Examples](#detailed-examples)
@@ -12,6 +13,7 @@ Table of Contents
   * [FastText's Command Line](#fasttexts-command-line)
   * [License](#license)
   * [References](#references)
+  * [Changelog](CHANGELOG.md)
   
 
 ## Introduction
@@ -28,22 +30,38 @@ JFastText is ideal for building fast text classifiers in Java.
 ## Maven Dependency
 ```xml
 <dependency>
-  <groupId>com.github.vinhkhuc</groupId>
+  <groupId>io.github.carschno</groupId>
   <artifactId>jfasttext</artifactId>
-  <version>0.4</version>
+  <version>0.9.1</version>
 </dependency>
 ```
-The Jar package on Maven Central is bundled with precompiled fastText library for Windows, Linux and
-MacOSX 64bit.
+The Jar package on Maven Central is bundled with precompiled fastText library for ~~Windows,~~ Linux ~~and
+MacOSX~~ 64bit.
+
+### Windows and Mac OS X
+
+Currently, the Maven dependency only contains binaries for Linux (64 bit), _not_ for Windows or Mac OS X.
+In order to use JFastText for Windows or Mac OS X (or any other system), you need to build it yourself (see [below](#building)). 
 
 ## Building
-C++ compiler (g++ on Mac/Linux or cl.exe on Windows) is required to compile fastText's code.
+C++ compiler (g++ on Mac/Linux or `cl.exe` on Windows) is required to compile fastText's code.
 
 ```bash
-git clone --recursive https://github.com/vinhkhuc/JFastText
+git clone --recursive https://github.com/carschno/JFastText
 cd JFastText
+git submodule init
+git submodule update
 mvn package
 ```
+
+### Building on Windows
+
+The (automatic) build seems to fail on some Windows systems/C++ compilers.
+See [this issue](https://github.com/carschno/JFastText/issues/5#issuecomment-546485377): 
+
+> I used MS's developer tools, not the full-blown Visual Studio. If I run `cl` directly, the compilation fails with the same error.
+>
+>  I was able to build on Windows by changing the call to `cl.exe` and running it outside the Maven build. I changed one parameter in the call to `cl`: I use `/MT` (whereas Maven uses `/MD`). Bundling the generated DLLs works fine.
 
 ## Quick Application - Language Identification
 JFastText can use FastText's pretrained models directly. Language identification models can be downloaded [here](https://fasttext.cc/docs/en/language-identification.html).
