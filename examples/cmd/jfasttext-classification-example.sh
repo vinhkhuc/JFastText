@@ -29,7 +29,9 @@ mkdir -p "${DATADIR}"
 
 if [ ! -f "${DATADIR}/dbpedia.train" ]
 then
-  wget -c "https://github.com/le-scientifique/torchDatasets/raw/master/dbpedia_csv.tar.gz" -O "${DATADIR}/dbpedia_csv.tar.gz"
+  CONFIRM=$(curl -sc /tmp/gcookie "https://drive.google.com/uc?export=download&id=0Bz8a_Dbh9QhbQ2Vic1kxMmZZQ1k" | grep -o 'confirm=[^&]*' | sed 's/confirm=//')
+  wget --load-cookies /tmp/gcookie "https://drive.google.com/uc?export=download&confirm=$CONFIRM&id=0Bz8a_Dbh9QhbQ2Vic1kxMmZZQ1k" -O "${DATADIR}/dbpedia_csv.tar.gz"
+  rm -rf /tmp/gcookie
   tar -xzvf "${DATADIR}/dbpedia_csv.tar.gz" -C "${DATADIR}"
   cat "${DATADIR}/dbpedia_csv/train.csv" | normalize_text > "${DATADIR}/dbpedia.train"
   cat "${DATADIR}/dbpedia_csv/test.csv" | normalize_text > "${DATADIR}/dbpedia.test"
